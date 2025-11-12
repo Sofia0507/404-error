@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.viewer-raw{
+    display: flex;
+    gap:2rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+model-viewer {
+  flex: 0 0 auto;
+  max-width: 200px;
+  min-width: 150px;
+  height: 300px;
+}
+
+/* Contenedor de los tres numeros */
+.viewer-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Responsive */
+
+
