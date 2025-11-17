@@ -72,6 +72,72 @@ model-viewer {
 }
 
 
+
+
+
+.model-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* efecto para cuando el modelo este bajo la luz */
+.model-wrap.abducting model-viewer {
+  filter: brightness(2) drop-shadow(0 0 20px #00ff80);
+  transform: translateY(-20px);
+  transition: 0.4s ease;
+}
+
+.ufo{
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 10;
+
+}
+
+.ufo-top{
+  width: 140px;
+  height: 45px;
+  background:#222;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 25px rgba(0,255,0,0.5);
+
+}
+
+.beam{
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 0px;
+  background: radial-gradient(circle at top, #ccffcc 0%, #00ff00 40%, rgba(0,255,0,0) 100%);
+  filter: blur(5px)
+  opacity(0);
+  transition: 0.4s ease;
+  clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
+  z-index: 4;
+
+}
+
+.beam.active{
+
+  height: 320px;
+  opacity: 1;
+  animation: beamPulse 1.5s infinite alternate;;
+}
+
+
 /* Responsive */
 
 /* Media query para pantalla pequeña */

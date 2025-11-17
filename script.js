@@ -11,6 +11,25 @@ for (let i = 0; i < numStars; i++) {
 }
 
 
+const ufo = document.querySelector(".ufo");
+const beam = document.querySelector(".beam");
+document.querySelectorAll(.mode-wrap).forEach(wrap=>){
+  wrap.addEventListener("mouseenter", () => {
+    const rect = wrap.getBoundingClientRect();
+    ufo.style.left = rect.left + rect.width / 2 + "px";
+    ufo.style.top = rect.top - 120 + "px";
+
+    beam.classList.add("active");
+    wrap.classList.add("abducting");
+  });
+
+  wrap.addEventListener("mouseleave", () => {
+    beam.classList.remove("active");
+    wrap.classList.remove("abducting");
+  });
+
+});
+
 
 
     

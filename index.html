@@ -5,47 +5,50 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
        <link rel="stylesheet" href="styles.css" />
      </head>
-    <body>
+   <body>
+
+      <div class="ufo">
+       <div class="ufo-top"></div>
+       <div class="beam"></div>
+      </div>
+
+      <!-- <button onclick="toggleBeam()">Encender / Apagar luz</button> -->
       <script src="stars.js" defer></script>
         <div class="viewer-row">
-         <!-- para ver los 3d -->
-          <!-- este es el 4 -->
-           <model-viewer src="4.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
-              <div class="progress-bar hide" slot="progress-bar">
-                  <div class="update-bar"></div>
-              </div>
-              <button slot="ar-button" id="ar-button">
-                 View in your space
-              </button>
-           </model-viewer>
-            <!-- este es el 0 -->
-           <model-viewer src="0.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
-               <div class="progress-bar hide" slot="progress-bar">
-                 <div class="update-bar"></div>
-               </div>
-               <button slot="ar-button" id="ar-button">
-                  View in your space
-               </button>
-           </model-viewer>
-            <!-- este es el 4 -->
-           <model-viewer src="4_2.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
-               <div class="progress-bar hide" slot="progress-bar">
-                  <div class="update-bar"></div>
-               </div>
-               <button slot="ar-button" id="ar-button">
-                  View in your space
-               </button>
-           </model-viewer>
-           <model-viewer src="astronauta.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
-             <div class="progress-bar hide" slot="progress-bar">
-               <div class="update-bar"></div>
-             </div>
-             <button slot="ar-button" id="ar-button">
-                 View in your space
-             </button>
-            </model-viewer>
-
+          <div class="model-wrap">
+                  <!-- para ver los 3d -->
+               <!-- este es el 4 -->
+               <model-viewer src="4.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+                  <div class="progress-bar hide" slot="progress-bar">
+                        <div class="update-bar"></div>
+                  </div>
+                  <button slot="ar-button" id="ar-button">
+                     View in your space
+                  </button>
+               </model-viewer>
+                  <!-- este es el 0 -->
+               <model-viewer src="0.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+                     <div class="progress-bar hide" slot="progress-bar">
+                     <div class="update-bar"></div>
+                     </div>
+                     <button slot="ar-button" id="ar-button">
+                        View in your space
+                     </button>
+               </model-viewer>
+                  <!-- este es el 4 -->
+               <model-viewer src="4_2.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+                     <div class="progress-bar hide" slot="progress-bar">
+                        <div class="update-bar"></div>
+                     </div>
+                     <button slot="ar-button" id="ar-button">
+                        View in your space
+                     </button>
+               </model-viewer>
+          </div>
+         
         </div>
+
+        
 
         <!-- <div class="image">
            <img src="imagenes/MARTE.png" alt="planeta marte">
@@ -53,6 +56,10 @@
 
         
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-        
+        <script>
+         function toggleBeam() {
+         document.querySelector(".beam").classList.toggle("active");
+         }
+         </script>
       </body>
 </html>
