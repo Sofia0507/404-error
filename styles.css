@@ -27,48 +27,23 @@ model-viewer {
 
 
 
-.image {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
 
-.image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+
+.beam {
   position: absolute;
-  bottom: 0;
-}
-
-
-#background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1;
-  object-fit: cover;
-}
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0;
-  animation: blink 2s infinite ease-in-out;
-  z-index: 0;
-}
-
-.viewer-row, .image {
+  top: 20px; /* más cerca del UFO */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px; /* más ancho */
+  height: 900px; /* más alto */
+  opacity: 1;
   z-index: 1;
-  position: relative;
+}
+
+.beam-img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover; 
 }
 
 
@@ -84,7 +59,7 @@ model-viewer {
 
 /* efecto para cuando el modelo este bajo la luz */
 .model-wrap.abducting model-viewer {
-  filter: brightness(2) drop-shadow(0 0 20px #00ff80);
+  filter: brightness(2) contrast(1.2) drop-shadow(0 0 20px #00ff80);
   transform: translateY(-20px);
   transition: 0.4s ease;
 }
@@ -97,8 +72,7 @@ model-viewer {
   width: 180px;
   height: 120px;
   pointer-events: none;
-  z-index: 10;
-
+  z-index: 9999;
 }
 
 .ufo-top{
@@ -111,23 +85,32 @@ model-viewer {
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 0 25px rgba(0,255,0,0.5);
-
 }
 
-.beam{
+/* .beam{
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%) rotateX(25deg);
+  width: 150px;
+  height: 0px;
+  background: linear-gradient(to bottom, rgba(0,255,234,0.5), rgba(0,255,234,0.05));
+  border-radius: 50% 50% 0 0;
+  filter: blur(12px);
+  opacity:0;
+  z-index: 1;
+  pointer-events: none;
+  transition: height 0.4s ease, opacity 0.4s ease;
+} */
+.beam {
   position: absolute;
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 140px;
-  height: 0px;
-  background: radial-gradient(circle at top, #ccffcc 0%, #00ff00 40%, rgba(0,255,0,0) 100%);
-  filter: blur(5px)
-  opacity(0);
-  transition: 0.4s ease;
-  clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
-  z-index: 4;
-
+  width: 300px; /* ajusta según el tamaño del haz */
+  height: 400px;
+  opacity: 1;
+  z-index: 1;
 }
 
 .beam.active{
@@ -136,7 +119,51 @@ model-viewer {
   opacity: 1;
   animation: beamPulse 1.5s infinite alternate;;
 }
+.ufo .beam {
+  position: absolute;
+  top: 50px; /* ajusta según tu UFO */
+  left: 50%;
+  transform: translateX(-50%) rotateX(25deg);
+  width: 150px;
+  height: 300px;
+  background: linear-gradient(to bottom, rgba(0,255,234,0.5), rgba(0,255,234,0.1));
+  border-radius: 50% 50% 0 0;
+  filter: blur(8px);
+  z-index: 1;
+  pointer-events: none;
+}
+.beam-text {
+  text-align: center;
+  color: #00ffe0;
+  font-family: 'Orbitron', sans-serif;
+  animation: beam-flicker 1.5s infinite alternate;
+  transform: translateY(-50px);
+}
+.beam-text .main-title {
+  font-size: 24px;
+  font-weight: bold;
+  color:#b91e1e;
+  margin-bottom: 15px; /* separación con el resto */
+  text-shadow: 0 0 10px #b91e1e, 0 0 20px #b91e1e;
+}
+.beam-text .sub-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #b91e1e;
+  /* text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000; */
+}
 
+@keyframes beam-flicker {
+  0% { opacity: 0.7; text-shadow: 0 0 5px rgb(139, 34, 2), 0 0 10px #b91e1e, 0 0 20px #b91e1e; }
+  50% { opacity: 1; text-shadow: 0 0 10px #b91e1e, 0 0 20px #b91e1e, 0 0 30px #b91e1e; }
+  100% { opacity: 0.8; text-shadow: 0 0 7px #b91e1e, 0 0 15px #b91e1e, 0 0 25px #b91e1e; }
+}
+
+.beam-text.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(20px); /* lo bajas un poco */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
 
 /* Responsive */
 
