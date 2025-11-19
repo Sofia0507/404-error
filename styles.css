@@ -10,12 +10,10 @@ body {
 }
 
 
-.viewer-row {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 0.1rem;
-  height: 65vh;
+.viewer-row,
+.beam-text {
+  position: relative;
+  z-index: 1; 
 }
 
 
@@ -25,29 +23,26 @@ model-viewer {
 }
 
 
-
-
-
-
 .beam {
-  position: absolute;
-  top: 20px; /* más cerca del UFO */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1000px; /* más ancho */
-  height: 900px; /* más alto */
-  opacity: 1;
-  z-index: 1;
+   position: fixed;           
+  top: 50%;                  
+  left: 50%;                 
+  transform: translate(-50%, -50%); 
+  width: 100vw;              
+  height: auto;              
+  z-index: -1;               
+  pointer-events: none;
 }
 
 .beam-img {
-  width: 100%;
-  height: 90px;
+  /* width: 100%; */
+  height: auto;
+  justify-content: center;
   object-fit: cover; 
+  z-index: -1;
+  transform: translate(-32%, -48%);
+  opacity: 0.8;
 }
-
-
-
 
 
 .model-wrap {
@@ -55,6 +50,7 @@ model-viewer {
   display: flex;
   justify-content: center;
   align-items: center;
+   transform: translateY(300px);
 }
 
 /* efecto para cuando el modelo este bajo la luz */
@@ -66,7 +62,7 @@ model-viewer {
 
 .ufo{
   position: absolute;
-  top: 5%;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
   width: 180px;
@@ -78,7 +74,7 @@ model-viewer {
 .ufo-top{
   width: 140px;
   height: 45px;
-  background:#222;
+  /* background:#222; */
   border-radius: 50%;
   position: absolute;
   top: 0;
@@ -134,36 +130,60 @@ model-viewer {
 }
 .beam-text {
   text-align: center;
-  color: #00ffe0;
+  color: #00ff00;
   font-family: 'Orbitron', sans-serif;
   animation: beam-flicker 1.5s infinite alternate;
-  transform: translateY(-50px);
+  transform: translateY(150px);
+
 }
 .beam-text .main-title {
   font-size: 24px;
   font-weight: bold;
-  color:#b91e1e;
+  color:#00ff00;
   margin-bottom: 15px; /* separación con el resto */
-  text-shadow: 0 0 10px #b91e1e, 0 0 20px #b91e1e;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
 .beam-text .sub-text {
   font-size: 16px;
   line-height: 1.5;
-  color: #b91e1e;
+  color: #00ff80;
   /* text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000; */
 }
 
 @keyframes beam-flicker {
-  0% { opacity: 0.7; text-shadow: 0 0 5px rgb(139, 34, 2), 0 0 10px #b91e1e, 0 0 20px #b91e1e; }
-  50% { opacity: 1; text-shadow: 0 0 10px #b91e1e, 0 0 20px #b91e1e, 0 0 30px #b91e1e; }
-  100% { opacity: 0.8; text-shadow: 0 0 7px #b91e1e, 0 0 15px #b91e1e, 0 0 25px #b91e1e; }
+  0% { opacity: 0.7; text-shadow: 0 0 5px rgb(139, 34, 2), 0 0 10px #00ff00, 0 0 20px #00ff00; }
+  50% { opacity: 1; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+  100% { opacity: 0.8; text-shadow: 0 0 7px #00ff00, 0 0 15px #00ff00, 0 0 25px #00ff00; }
 }
 
-.beam-text.active {
-  opacity: 1;
-  transform: translateX(-50%) translateY(20px); /* lo bajas un poco */
-  transition: opacity 0.4s ease, transform 0.4s ease;
+.beam-buttons {
+  text-align: center;
+  margin-top: 20px;
+  z-index: 1;
+  transform: translate(5%, -47%);
 }
+
+.beam-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #00ff00;
+  background: transparent;
+  border: 2px solid #00ff00;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #00ff26, 0 0 20px #00ff26;
+}
+.beam-btn:hover {
+  background: #00ff80;
+  color: black;
+  box-shadow: 0 0 20px #00ff80, 0 0 40px #00ff80;
+}
+
 
 /* Responsive */
 
@@ -185,3 +205,48 @@ model-viewer {
     height: 160px;
   }
 }
+
+
+@media (max-width: 600px) {
+  .beam-img {
+    width: 100%;
+    height: auto;
+    transform: translate(-1%, -25%);
+    opacity: 0.7;
+  }
+
+  .beam {
+    width: 100vw;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 600px) {
+    .model-wrap {
+    transform: translateY(250px); /* más abajo */
+    flex-direction: row;
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 300px; 
+  }
+
+  model-viewer {
+    width: 120px;
+    height: 140px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .beam-text {
+    transform: translateY(50px);
+  }
+  .beam-text .p{
+    font-size: 14px;
+    margin: 10px;
+  }
+}
+  
