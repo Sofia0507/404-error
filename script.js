@@ -1,47 +1,30 @@
+// Para reloj y hora
 
+function updateClock() {
+  const now = new Date();
+  const time = now.toLocaleTimeString();
+  document.getElementById('clock').textContent = time;
+}
 
-const ufo = document.querySelector(".ufo");
-const beam = document.querySelector(".beam");
-document.querySelectorAll(".model-wrap").forEach(wrap => {
+setInterval(updateClock, 1000);
+updateClock();
 
-  wrap.addEventListener("mouseenter", () => {
-    const rect = wrap.getBoundingClientRect();
-    ufo.style.left = rect.left + rect.width / 2 + "px";
-    ufo.style.top = rect.top - 120 + "px";
+function updateClock() {
+  const now = new Date();
 
-    beam.classList.add("active");
-    wrap.classList.add("abducting");
-  });
+  // Día + fecha completa
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const date = now.toLocaleDateString('es-ES', options);
 
-  wrap.addEventListener("mouseleave", () => {
-    beam.classList.remove("active");
-    wrap.classList.remove("abducting");
-  });
+  // Hora
+  const time = now.toLocaleTimeString('es-ES');
 
-});
+  // Mostrar todo junto
+  document.getElementById('clock').textContent = `${date} - ${time}`;
+}
 
-const beamText = document.querySelector(".beam-text");
-
-document.querySelectorAll(".model-wrap").forEach(wrap => {
-  wrap.addEventListener("mouseenter", () => {
-    const rect = wrap.getBoundingClientRect();
-    ufo.style.left = rect.left + rect.width / 2 + "px";
-    ufo.style.top = rect.top - 120 + "px";
-
-    beam.classList.add("active");
-    wrap.classList.add("abducting");
-    beamText.classList.add("active"); // activa el texto junto con el haz
-  });
-
-  wrap.addEventListener("mouseleave", () => {
-    beam.classList.remove("active");
-    wrap.classList.remove("abducting");
-    beamText.classList.remove("active"); // lo apaga al salir
-  });
-});
-
-
-
+setInterval(updateClock, 1000);
+updateClock();
 
 
     
